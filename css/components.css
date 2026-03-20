@@ -318,6 +318,66 @@ body {
   height: 100%;
   display: block;
 }
+.price-card {
+  max-width: 720px;                      /* full-width card like design */
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px 24px 18px;               /* top / sides / bottom */
+  box-shadow:
+    0 18px 40px rgba(15, 23, 42, 0.08),
+    0 0 0 1px rgba(148, 163, 184, 0.18);
+  font-family: 'Urbanist', system-ui, sans-serif;
+}
+
+.price-card__header {
+  margin-bottom: 18px;
+}
+
+.price-card__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.price-card__value {
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: 0.01em;
+}
+
+.price-card__chips {
+  display: inline-flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.price-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: #fee9aa;
+  color: #92400e;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid #f5d272;
+  white-space: nowrap;
+}
+
+.price-card__cert {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: #f4f5f7;
+  color: #111827;
+  font-size: 14px;
+  font-weight: 500;
+}
+
 .hero-subtitle {
   font-size: 20px;
   color: #64748b;
