@@ -1,0 +1,319 @@
+/* ============ Base header ============ */
+
+.site-header {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e4e4e4;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.site-header__bar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* ============ Brand / Logo ============ */
+
+.site-header__brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.site-header__logo {
+  display: block;
+  height: 32px;
+  width: auto;
+}
+
+/* ============ Primary nav (desktop / tablet) ============ */
+
+.primary-nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.primary-nav__list {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.primary-nav__item {
+  position: relative;
+}
+
+.primary-nav__link,
+.primary-nav__link--button {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #2c2c2c;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.primary-nav__link:hover,
+.primary-nav__link:focus-visible,
+.primary-nav__link--button:hover,
+.primary-nav__link--button:focus-visible {
+  color: #0b7cff;
+}
+
+/* caret for dropdown */
+.primary-nav__caret {
+  margin-left: 0.35rem;
+  font-size: 0.7rem;
+}
+
+/* ============ Dropdown (desktop) ============ */
+
+.primary-nav__dropdown {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  min-width: 9rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  border: 1px solid #e4e4e4;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+  padding: 0.5rem 0;
+  list-style: none;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: opacity 150ms ease, transform 150ms ease, visibility 150ms ease;
+}
+
+.primary-nav__dropdown-link {
+  display: block;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.9rem;
+  color: #222222;
+  text-decoration: none;
+}
+
+.primary-nav__dropdown-link:hover,
+.primary-nav__dropdown-link:focus-visible {
+  background-color: #f3f4f6;
+}
+
+/* show dropdown when parent has a helper class (set in JS) or on hover for desktop */
+.primary-nav__item--has-dropdown:hover .primary-nav__dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ============ Primary CTA (desktop / tablet) ============ */
+
+.site-header__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.5rem;
+  border-radius: 999px;
+  border: none;
+  background-color: #0b7cff;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-header__cta:hover,
+.site-header__cta:focus-visible {
+  background-color: #0664d0;
+}
+
+/* ============ Mobile menu toggle ============ */
+
+.site-header__menu-toggle {
+  display: none; /* shown on small screens */
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid #d4d4d8;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.site-header__menu-line {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background-color: #111827;
+}
+
+.site-header__menu-line + .site-header__menu-line {
+  margin-top: 4px;
+}
+
+/* ============ Mobile nav drawer ============ */
+
+.mobile-nav {
+  border-top: 1px solid #e4e4e4;
+  background-color: #ffffff;
+}
+
+.mobile-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mobile-nav__item {
+  display: block;
+}
+
+.mobile-nav__link,
+.mobile-nav__link--button {
+  width: 100%;
+  text-align: left;
+  padding: 0.55rem 0;
+  font-size: 0.95rem;
+  color: #111827;
+  background: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mobile-nav__link:hover,
+.mobile-nav__link:focus-visible,
+.mobile-nav__link--button:hover,
+.mobile-nav__link--button:focus-visible {
+  color: #0b7cff;
+}
+
+/* mobile submenu for Products */
+
+.mobile-nav__submenu {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0.25rem 0.75rem;
+  display: none;
+}
+
+.mobile-nav__submenu-link {
+  display: block;
+  padding: 0.3rem 0;
+  font-size: 0.9rem;
+  color: #4b5563;
+  text-decoration: none;
+}
+
+.mobile-nav__submenu-link:hover,
+.mobile-nav__submenu-link:focus-visible {
+  color: #0b7cff;
+}
+
+/* CTA inside mobile drawer */
+
+.mobile-nav__item--cta {
+  margin-top: 0.25rem;
+}
+
+.mobile-nav__link--cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.25rem;
+  border-radius: 999px;
+  background-color: #0b7cff;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* caret inside mobile drawer */
+
+.mobile-nav__caret {
+  margin-left: 0.35rem;
+  font-size: 0.7rem;
+}
+
+/* helper states controlled in JS */
+
+/* when mobile nav is open */
+.mobile-nav--open {
+  display: block;
+}
+
+/* when mobile submenu is open */
+.mobile-nav__submenu--open {
+  display: block;
+}
+
+/* when drawer is closed but not using [hidden] attribute */
+.mobile-nav--closed {
+  display: none;
+}
+
+/* ============ Responsive behavior ============ */
+
+/* Small screens: show burger, hide desktop nav & desktop CTA */
+@media (max-width: 767px) {
+  .primary-nav {
+    display: none;
+  }
+
+  .site-header__cta {
+    display: none;
+  }
+
+  .site-header__menu-toggle {
+    display: inline-flex;
+  }
+
+  .site-header__bar {
+    padding-inline: 1rem;
+  }
+}
+
+/* Medium (tablet) and up: show horizontal nav and CTA, hide mobile drawer unless explicitly opened */
+@media (min-width: 768px) {
+  .mobile-nav {
+    display: none !important;
+  }
+
+  .site-header__menu-toggle {
+    display: none;
+  }
+
+  .site-header__bar {
+    padding-inline: 2rem;
+  }
+}
+
+/* Large (laptop / desktop / TV) tweaks */
+@media (min-width: 1280px) {
+  .site-header__bar {
+    max-width: 1320px;
+  }
+
+  .primary-nav__list {
+    gap: 3rem;
+  }
+}

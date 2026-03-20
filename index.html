@@ -8,7 +8,90 @@
   <link rel="stylesheet" href="css/components.css">
 </head>
 <body>
-  <div id="nav-placeholder"></div>  <!-- Nav goes here -->
+  <!-- header -->
+  <header class="site-header">
+    <div class="site-header__bar">
+      <!-- Brand / Logo -->
+      <a href="/" class="site-header__brand" aria-label="Mangalam Hope Pipes Home">
+        <img
+          src="assets/logo-mangalam.svg"
+          alt="Mangalam Hope Pipes"
+          class="site-header__logo"
+        />
+      </a>
+
+      <!-- Desktop / Tablet nav -->
+      <nav class="primary-nav" aria-label="Main navigation">
+        <ul class="primary-nav__list">
+          <li class="primary-nav__item">
+            <a href="#about" class="primary-nav__link">About Us</a>
+          </li>
+          <li class="primary-nav__item primary-nav__item--has-dropdown">
+            <button
+              class="primary-nav__link primary-nav__link--button"
+              type="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Products
+              <span class="primary-nav__caret" aria-hidden="true">▾</span>
+            </button>
+            <!-- Optional dropdown menu -->
+            <ul class="primary-nav__dropdown">
+              <li><a href="#pipes" class="primary-nav__dropdown-link">Pipes</a></li>
+              <li><a href="#coils" class="primary-nav__dropdown-link">Coils</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Primary CTA -->
+      <a href="#contact" class="site-header__cta">Contact Us</a>
+
+      <!-- Mobile menu toggle -->
+      <button
+        class="site-header__menu-toggle"
+        type="button"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >
+        <span class="site-header__menu-line"></span>
+        <span class="site-header__menu-line"></span>
+        <span class="site-header__menu-line"></span>
+      </button>
+    </div>
+
+    <!-- Mobile nav drawer -->
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden>
+      <ul class="mobile-nav__list">
+        <li class="mobile-nav__item">
+          <a href="#about" class="mobile-nav__link">About Us</a>
+        </li>
+        <li class="mobile-nav__item">
+          <button
+            class="mobile-nav__link mobile-nav__link--button"
+            type="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Products
+            <span class="mobile-nav__caret" aria-hidden="true">▾</span>
+          </button>
+          <ul class="mobile-nav__submenu">
+            <li><a href="#pipes" class="mobile-nav__submenu-link">Pipes</a></li>
+            <li><a href="#coils" class="mobile-nav__submenu-link">Coils</a></li>
+          </ul>
+        </li>
+        <li class="mobile-nav__item mobile-nav__item--cta">
+          <a href="#contact" class="mobile-nav__link mobile-nav__link--cta">
+            Contact Us
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
   <main>
     <!-- Page content -->
   </main>
