@@ -1,7 +1,10 @@
-body {
+html, body {
   font-family: 'Urbanist', sans-serif;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 .site-header {
   font-family: 'Urbanist', sans-serif;
 }
+
