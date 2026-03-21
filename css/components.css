@@ -683,3 +683,157 @@ body {
     height: 32px;
   }
 }
+/* Section background + layout */
+.specs-section {
+  background-color: #0f172a; /* dark navy */
+  padding: 4rem 1.5rem 5rem;
+  color: #e5e7eb;
+  font-family: 'Urbanist', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', sans-serif;
+}
+
+.specs-container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* Heading area */
+.specs-header {
+  margin-bottom: 2.5rem;
+}
+
+.specs-title {
+  font-size: clamp(2rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  color: #f9fafb;
+  margin-bottom: 0.75rem;
+}
+
+.specs-subtitle {
+  max-width: 640px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #9ca3af;
+}
+
+/* Table */
+.specs-table-wrapper {
+  background-color: #111827;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.55);
+}
+
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.specs-table thead {
+  background-color: #1f2937; /* slightly lighter header */
+}
+
+.specs-table th,
+.specs-table td {
+  padding: 0.9rem 1.5rem;
+  text-align: left;
+}
+
+.specs-table th {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+  border-bottom: 1px solid #111827;
+}
+
+.specs-table tbody tr {
+  border-bottom: 1px solid #1f2937;
+}
+
+.specs-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.specs-table tbody td:first-child {
+  color: #e5e7eb;
+  font-weight: 500;
+  width: 40%;
+}
+
+.specs-table tbody td:last-child {
+  color: #d1d5db;
+}
+
+/* Hover effect */
+.specs-table tbody tr:hover {
+  background-color: #111827;
+}
+
+/* Bottom CTA button */
+.specs-cta-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.specs-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem;
+  border-radius: 10px;
+  background-color: transparent;
+  color: #f9fafb;
+  border: 1.5px solid #f9fafb; /* yellow border */
+  font-size: 0.95rem;
+  /* font-weight: 600; */
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease,
+    transform 0.15s ease, border-color 0.2s ease;
+}
+
+.specs-download-icon img {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.specs-download-icon {
+  font-size: 1rem;
+}
+
+/* Hover / active states */
+.specs-download-btn:hover {
+  background-color: rgba(250, 204, 21, 0.08);
+  border-color: #fbbf24;
+  box-shadow: 0 0 0 1px rgba(250, 204, 21, 0.5);
+  transform: translateY(-1px);
+}
+
+.specs-download-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Mobile tweaks */
+@media (max-width: 640px) {
+  .specs-section {
+    padding: 3rem 1rem 3.5rem;
+  }
+
+  .specs-table th,
+  .specs-table td {
+    padding: 0.75rem 1rem;
+  }
+
+  .specs-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .specs-download-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
