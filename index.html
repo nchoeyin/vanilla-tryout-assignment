@@ -398,6 +398,7 @@
       </div>
     </section>
 
+    <!-- faq section -->
     <section class="faq-section" aria-labelledby="faq-heading">
       <div class="faq-container">
 
@@ -482,6 +483,150 @@
       </div>
     </section>
 
+    <!-- applications carousel -->
+    <section class="applications-section" aria-labelledby="applications-heading">
+      <div class="applications-section__inner">
+        <header class="applications-section__header">
+          <div class="applications-section__intro">
+            <h2 class="applications-section__title" id="applications-heading">
+              Versatile Applications Across Industries
+            </h2>
+            <p class="applications-section__lede">
+              From technical textiles to packaging materials, our precision-engineered machinery
+              delivers superior performance across diverse applications.
+            </p>
+          </div>
+          <div class="applications-carousel__nav" role="group" aria-label="Carousel controls">
+            <button
+              type="button"
+              class="applications-carousel__btn applications-carousel__btn--prev"
+              aria-controls="applications-carousel-viewport"
+              aria-label="Show previous slides"
+            >
+              <svg class="applications-carousel__chevron" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="applications-carousel__btn applications-carousel__btn--next"
+              aria-controls="applications-carousel-viewport"
+              aria-label="Show next slides"
+            >
+              <svg class="applications-carousel__chevron" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </header>
+
+        <div
+          id="applications-carousel-viewport"
+          class="applications-carousel"
+          role="region"
+          aria-roledescription="carousel"
+          aria-labelledby="applications-heading"
+        >
+          <ul
+            id="applications-carousel-track"
+            class="applications-carousel__track"
+            role="list"
+          >
+            <li class="applications-carousel__slide">
+              <article class="applications-card">
+                <div class="applications-card__media-zone">
+                  <img
+                    class="applications-card__media"
+                    src="assets/images/fishnet-manufacturing.jpg"
+                    alt="Industrial worker inspecting machinery on the factory floor"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="applications-card__gradient" aria-hidden="true"></div>
+                <div class="applications-card__body">
+                  <h3 class="applications-card__title">Fishnet Manufacturing</h3>
+                  <p class="applications-card__text">
+                    High-performance twisting solutions for packaging yarn, strapping materials, and
+                    reinforcement threads used in modern packaging applications.
+                  </p>
+                </div>
+              </article>
+            </li>
+            <li class="applications-carousel__slide">
+              <article class="applications-card">
+                <div class="applications-card__media-zone">
+                  <img
+                    class="applications-card__media"
+                    src="assets/images/fishnet-manufacturing.jpg"
+                    alt="Technician in safety gear at industrial equipment"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="applications-card__gradient" aria-hidden="true"></div>
+                <div class="applications-card__body">
+                  <h3 class="applications-card__title">Technical Textiles</h3>
+                  <p class="applications-card__text">
+                    Precision machinery for technical yarns and industrial fabrics where strength,
+                    uniformity, and throughput define product quality.
+                  </p>
+                </div>
+              </article>
+            </li>
+            <li class="applications-carousel__slide">
+              <article class="applications-card">
+                <div class="applications-card__media-zone">
+                  <img
+                    class="applications-card__media"
+                    src="assets/images/fishnet-manufacturing.jpg"
+                    alt="Manufacturing floor with machinery and operator"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="applications-card__gradient" aria-hidden="true"></div>
+                <div class="applications-card__body">
+                  <h3 class="applications-card__title">Packaging Materials</h3>
+                  <p class="applications-card__text">
+                    Reliable lines for strapping, film substrates, and reinforcement fibers used in
+                    high-speed packaging and logistics workflows.
+                  </p>
+                </div>
+              </article>
+            </li>
+            <li class="applications-carousel__slide">
+              <article class="applications-card">
+                <div class="applications-card__media-zone">
+                  <img
+                    class="applications-card__media"
+                    src="assets/images/fishnet-manufacturing.jpg"
+                    alt="Industrial production environment"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="applications-card__gradient" aria-hidden="true"></div>
+                <div class="applications-card__body">
+                  <h3 class="applications-card__title">Reinforcement Threads</h3>
+                  <p class="applications-card__text">
+                    Engineered twisting and winding for composite reinforcement and specialty cord
+                    applications across automotive and construction supply chains.
+                  </p>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </div>
+
+        <div
+          id="applications-zoom-preview"
+          class="applications-zoom-preview"
+          hidden
+          aria-hidden="true"
+        >
+          <div class="applications-zoom-preview__frame">
+            <img class="applications-zoom-preview__img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" decoding="async" draggable="false" />
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <script src="js/utils.js" defer></script>
