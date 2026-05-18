@@ -65,7 +65,7 @@
           <button class="mobile-nav__link mobile-nav__link--button" type="button" aria-haspopup="true"
             aria-expanded="false">
             Products
-            <span class="mobile-nav__caret" aria-hidden="true">▾</span>
+            <img src="assets/icons/caret-arrow-down.svg" alt="" class="mobile-nav__caret" aria-hidden="true" />
           </button>
           <ul class="mobile-nav__submenu">
             <li><a href="#pipes" class="mobile-nav__submenu-link">Pipes</a></li>
@@ -86,11 +86,47 @@
     <section class="hero-section">
       <div class="hero-container">
 
-        <!-- Left content -->
-        <div class="hero-image">
-          <!-- Replace with your image: assets/hero-pipes.jpg -->
-          <img src="assets/images/hero_section_fisherman_image.svg" alt="HDPE Pipes & Coils installation"
-            loading="lazy">
+        <!-- Left content: hero gallery -->
+        <div class="hero-gallery">
+          <div class="hero-image hero-gallery__main" data-zoom-source>
+            <img src="assets/images/fishnet-manufacturing.jpg" alt="HDPE Pipes & Coils installation"
+              class="hero-image__media hero-gallery__media" loading="lazy">
+            <button type="button" class="hero-gallery__nav hero-gallery__nav--prev" aria-label="Previous image">
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+            <button type="button" class="hero-gallery__nav hero-gallery__nav--next" aria-label="Next image">
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+          <ul class="hero-gallery__thumbs" role="list">
+            <li>
+              <button type="button" class="hero-gallery__thumb hero-gallery__thumb--active"
+                data-src="assets/images/fishnet-manufacturing.jpg" aria-label="View image 1"
+                aria-current="true"></button>
+            </li>
+            <li>
+              <button type="button" class="hero-gallery__thumb"
+                data-src="assets/images/hero_section_fisherman_image.svg" aria-label="View image 2"></button>
+            </li>
+            <li>
+              <button type="button" class="hero-gallery__thumb" data-src="assets/images/fishnet-manufacturing.jpg"
+                aria-label="View image 3"></button>
+            </li>
+            <li>
+              <button type="button" class="hero-gallery__thumb"
+                data-src="assets/images/hero_section_fisherman_image.svg" aria-label="View image 4"></button>
+            </li>
+            <li>
+              <button type="button" class="hero-gallery__thumb" data-src="assets/images/fishnet-manufacturing.jpg"
+                aria-label="View image 5"></button>
+            </li>
+          </ul>
         </div>
 
         <!-- Right image -->
@@ -642,16 +678,36 @@
     <section class="testimonials-section" aria-labelledby="testimonials-heading">
       <div class="testimonials-section__inner">
         <header class="testimonials-section__header">
-          <h2 class="testimonials-section__title" id="testimonials-heading">
-            Trusted Performance. Proven Results
-          </h2>
-          <p class="testimonials-section__lede">
-            From innovative Two-For-One Twisters to specialized heat setting machines, we deliver
-            complete solutions for modern textile manufacturing.
-          </p>
+          <div class="testimonials-section__intro">
+            <h2 class="testimonials-section__title" id="testimonials-heading">
+              Trusted Performance. Proven Results
+            </h2>
+            <p class="testimonials-section__lede">
+              From innovative Two-For-One Twisters to specialized heat setting machines, we deliver
+              complete solutions for modern textile manufacturing.
+            </p>
+          </div>
+          <div class="testimonials-carousel__nav" role="group" aria-label="Testimonials carousel controls">
+            <button type="button" class="applications-carousel__btn testimonials-carousel__btn--prev"
+              aria-controls="testimonials-scroller" aria-label="Show previous testimonials">
+              <svg class="applications-carousel__chevron" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"
+                focusable="false">
+                <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+            <button type="button" class="applications-carousel__btn testimonials-carousel__btn--next"
+              aria-controls="testimonials-scroller" aria-label="Show next testimonials">
+              <svg class="applications-carousel__chevron" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"
+                focusable="false">
+                <path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
         </header>
 
-        <div class="testimonials-section__scroller">
+        <div id="testimonials-scroller" class="testimonials-section__scroller">
           <ul class="testimonials-section__track" role="list">
             <li class="testimonials-section__slide">
               <article class="testimonial-card">
@@ -917,6 +973,17 @@
 
   <footer class="site-footer">
     <div class="site-footer__inner">
+      <!-- brand banner -->
+      <div class="site-footer__banner">
+        <a href="/" class="site-footer__brand" aria-label="Mangalam HDPE Pipes Home">
+          <img src="assets/logo/navbar_app_logo.svg" alt="Mangalam HDPE Pipes" class="site-footer__logo" />
+        </a>
+        <p class="site-footer__tagline">
+          Premium HDPE Pipes &amp; Coils for
+          <span class="site-footer__tagline-accent">Modern Infrastructure</span>
+        </p>
+      </div>
+
       <!-- columns -->
       <div class="site-footer__columns">
         <section class="footer-col" aria-labelledby="footer-about">

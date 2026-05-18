@@ -1,9 +1,64 @@
+// ===== Sticky header (appears after first fold, hides on scroll back up) =====
+(function () {
+  var header = document.querySelector('.site-header');
+  var hero = document.querySelector('.hero-section');
+  if (!header || !hero) return;
+
+  // Clone the existing header so the sticky version mirrors the original markup/styles.
+  var sticky = header.cloneNode(true);
+  sticky.classList.add('site-header--sticky');
+  // Avoid duplicate IDs from the cloned subtree (e.g. #mobile-nav)
+  sticky.querySelectorAll('[id]').forEach(function (el) {
+    el.id = el.id + '--sticky';
+  });
+  var stickyMobileToggle = sticky.querySelector('.site-header__menu-toggle');
+  var stickyMobileNav = sticky.querySelector('.mobile-nav');
+  if (stickyMobileToggle && stickyMobileNav) {
+    stickyMobileToggle.setAttribute('aria-controls', stickyMobileNav.id);
+    stickyMobileToggle.addEventListener('click', function () {
+      var isOpen = stickyMobileToggle.getAttribute('aria-expanded') === 'true';
+      stickyMobileToggle.setAttribute('aria-expanded', String(!isOpen));
+      stickyMobileNav.hidden = isOpen;
+    });
+  }
+  var stickyProductsBtn = sticky.querySelector('.mobile-nav__link--button');
+  var stickySubmenu = sticky.querySelector('.mobile-nav__submenu');
+  if (stickyProductsBtn && stickySubmenu) {
+    stickyProductsBtn.addEventListener('click', function () {
+      var isOpen = stickyProductsBtn.getAttribute('aria-expanded') === 'true';
+      stickyProductsBtn.setAttribute('aria-expanded', String(!isOpen));
+      stickySubmenu.classList.toggle('mobile-nav__submenu--open', !isOpen);
+    });
+  }
+  document.body.appendChild(sticky);
+
+  // Show sticky header when the hero section is no longer intersecting the viewport.
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          sticky.classList.remove('is-visible');
+        } else {
+          sticky.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
+    observer.observe(hero);
+  } else {
+    // Fallback: scroll-based check
+    window.addEventListener('scroll', function () {
+      var heroBottom = hero.getBoundingClientRect().bottom;
+      sticky.classList.toggle('is-visible', heroBottom <= 0);
+    }, { passive: true });
+  }
+})();
+
 // ===== Mobile nav toggle =====
 const menuToggle = document.querySelector('.site-header__menu-toggle');
-const mobileNav  = document.querySelector('#mobile-nav');
+const mobileNav = document.querySelector('#mobile-nav');
 
 if (menuToggle && mobileNav) {
-  menuToggle.addEventListener('click', function() {
+  menuToggle.addEventListener('click', function () {
     const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
     menuToggle.setAttribute('aria-expanded', String(!isOpen));
     mobileNav.hidden = isOpen;
@@ -12,10 +67,10 @@ if (menuToggle && mobileNav) {
 
 // ===== Mobile products submenu =====
 const mobileProductsBtn = document.querySelector('.mobile-nav__link--button');
-const mobileSubmenu     = document.querySelector('.mobile-nav__submenu');
+const mobileSubmenu = document.querySelector('.mobile-nav__submenu');
 
 if (mobileProductsBtn && mobileSubmenu) {
-  mobileProductsBtn.addEventListener('click', function() {
+  mobileProductsBtn.addEventListener('click', function () {
     const isOpen = mobileProductsBtn.getAttribute('aria-expanded') === 'true';
     mobileProductsBtn.setAttribute('aria-expanded', String(!isOpen));
     mobileSubmenu.classList.toggle('mobile-nav__submenu--open', !isOpen);
@@ -23,7 +78,7 @@ if (mobileProductsBtn && mobileSubmenu) {
 }
 
 // ===== Applications carousel (horizontal scroll) =====
-(function() {
+(function () {
   var track = document.getElementById('applications-carousel-track');
   var prevBtn = document.querySelector('.applications-carousel__btn--prev');
   var nextBtn = document.querySelector('.applications-carousel__btn--next');
@@ -39,16 +94,16 @@ if (mobileProductsBtn && mobileSubmenu) {
     return slide.getBoundingClientRect().width + gap;
   }
 
-  prevBtn.addEventListener('click', function() {
+  prevBtn.addEventListener('click', function () {
     scroller.scrollBy({ left: -slideStep(), behavior: 'smooth' });
   });
-  nextBtn.addEventListener('click', function() {
+  nextBtn.addEventListener('click', function () {
     scroller.scrollBy({ left: slideStep(), behavior: 'smooth' });
   });
 })();
 
-// ===== Applications carousel: hover zoom preview (fine pointer only) =====
-(function() {
+// ===== Reusable hover zoom preview (fine pointer only) =====
+(function () {
   var preview = document.getElementById('applications-zoom-preview');
   if (!preview) return;
   var zoomImg = preview.querySelector('.applications-zoom-preview__img');
@@ -66,17 +121,10 @@ if (mobileProductsBtn && mobileSubmenu) {
   var openToken = 0;
 
   function cancelScheduledHide() {
-    if (leaveTimer) {
-      clearTimeout(leaveTimer);
-      leaveTimer = null;
-    }
+    if (leaveTimer) { clearTimeout(leaveTimer); leaveTimer = null; }
   }
-
   function cancelHideTimer() {
-    if (hideTimer) {
-      clearTimeout(hideTimer);
-      hideTimer = null;
-    }
+    if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
   }
 
   function setFocalFromPointer(zone, clientX, clientY) {
@@ -108,7 +156,7 @@ if (mobileProductsBtn && mobileSubmenu) {
     preview.classList.remove('applications-zoom-preview--visible');
     var snapshot = openToken;
     var delay = mqReduce.matches || !mqHover.matches ? 0 : 280;
-    hideTimer = setTimeout(function() {
+    hideTimer = setTimeout(function () {
       hideTimer = null;
       if (snapshot !== openToken) return;
       preview.hidden = true;
@@ -116,21 +164,18 @@ if (mobileProductsBtn && mobileSubmenu) {
       zoomImg.src = TRANSPARENT_PIXEL;
     }, delay);
   }
-
   function scheduleHide() {
     cancelScheduledHide();
-    leaveTimer = setTimeout(function() {
+    leaveTimer = setTimeout(function () {
       leaveTimer = null;
       hidePreview();
     }, 45);
   }
 
-  document.querySelectorAll('.applications-card').forEach(function(card) {
-    var zone = card.querySelector('.applications-card__media-zone');
-    var sourceImg = card.querySelector('.applications-card__media');
+  function bindZone(zone, sourceImg) {
     if (!zone || !sourceImg) return;
 
-    zone.addEventListener('mouseenter', function(e) {
+    zone.addEventListener('mouseenter', function (e) {
       cancelScheduledHide();
       cancelHideTimer();
       openToken++;
@@ -142,40 +187,78 @@ if (mobileProductsBtn && mobileSubmenu) {
       setFocalFromPointer(zone, e.clientX, e.clientY);
       preview.removeAttribute('hidden');
       preview.hidden = false;
-      requestAnimationFrame(function() {
+      requestAnimationFrame(function () {
         positionPreviewNearPointer(e.clientX, e.clientY);
-        requestAnimationFrame(function() {
+        requestAnimationFrame(function () {
           positionPreviewNearPointer(e.clientX, e.clientY);
           preview.classList.add('applications-zoom-preview--visible');
         });
       });
     });
 
-    zone.addEventListener('mousemove', function(e) {
+    zone.addEventListener('mousemove', function (e) {
       if (!mqHover.matches || mqReduce.matches) return;
       if (preview.hidden) return;
       if (raf) cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(function() {
+      raf = requestAnimationFrame(function () {
         raf = null;
         setFocalFromPointer(zone, e.clientX, e.clientY);
         positionPreviewNearPointer(e.clientX, e.clientY);
       });
     });
 
-    zone.addEventListener('mouseleave', function() {
+    zone.addEventListener('mouseleave', function () {
       if (!mqHover.matches) return;
       scheduleHide();
     });
+  }
+
+  // Applications cards
+  document.querySelectorAll('.applications-card').forEach(function (card) {
+    bindZone(
+      card.querySelector('.applications-card__media-zone'),
+      card.querySelector('.applications-card__media')
+    );
+  });
+
+  // Hero image (and any other element opting in via [data-zoom-source])
+  document.querySelectorAll('[data-zoom-source]').forEach(function (zone) {
+    bindZone(zone, zone.querySelector('img'));
+  });
+})();
+
+// ===== Testimonials carousel (horizontal scroll) =====
+(function () {
+  var scroller = document.getElementById('testimonials-scroller');
+  var prevBtn = document.querySelector('.testimonials-carousel__btn--prev');
+  var nextBtn = document.querySelector('.testimonials-carousel__btn--next');
+  if (!scroller || !prevBtn || !nextBtn) return;
+  var track = scroller.querySelector('.testimonials-section__track');
+  if (!track) return;
+
+  function slideStep() {
+    var slide = track.querySelector('.testimonials-section__slide');
+    if (!slide) return 0;
+    var styles = window.getComputedStyle(track);
+    var gap = parseFloat(styles.columnGap || styles.gap) || 0;
+    return slide.getBoundingClientRect().width + gap;
+  }
+
+  prevBtn.addEventListener('click', function () {
+    scroller.scrollBy({ left: -slideStep(), behavior: 'smooth' });
+  });
+  nextBtn.addEventListener('click', function () {
+    scroller.scrollBy({ left: slideStep(), behavior: 'smooth' });
   });
 })();
 
 // ===== FAQ accordion =====
-document.querySelectorAll('.faq-item__trigger').forEach(function(trigger) {
-  trigger.addEventListener('click', function() {
+document.querySelectorAll('.faq-item__trigger').forEach(function (trigger) {
+  trigger.addEventListener('click', function () {
     var answer = document.getElementById(trigger.getAttribute('aria-controls'));
     var isOpen = trigger.getAttribute('aria-expanded') === 'true';
 
-    document.querySelectorAll('.faq-item__trigger').forEach(function(t) {
+    document.querySelectorAll('.faq-item__trigger').forEach(function (t) {
       t.setAttribute('aria-expanded', 'false');
       var icon = t.querySelector('.faq-item__icon');
       if (icon) icon.classList.remove('faq-item__icon--up');
