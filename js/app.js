@@ -252,6 +252,79 @@ if (mobileProductsBtn && mobileSubmenu) {
   });
 })();
 
+// ===== HDPE manufacturing process: pills (tabs) + mobile prev/next =====
+(function () {
+  var pills = Array.prototype.slice.call(document.querySelectorAll('.hdpe-process-pill'));
+  var titleEl = document.querySelector('.hdpe-process-detail__title');
+  if (!pills.length) return;
+
+  var stepDetails = [
+    {
+      title: 'High-Grade Raw Material Selection',
+      body: 'Vacuum sizing tanks ensure precise outer diameter while internal pressure maintains perfect roundness and wall thickness uniformity.'
+    },
+    {
+      title: 'Precision Extrusion Process',
+      body: 'Twin-screw extruders melt and shape PE100 resin at controlled temperatures and pressures for consistent flow and homogenous output.'
+    },
+    {
+      title: 'Controlled Cooling Stage',
+      body: 'Multi-stage cooling baths gradually bring pipes to ambient temperature, locking in dimensional stability and mechanical strength.'
+    },
+    {
+      title: 'Vacuum Sizing for Dimensional Accuracy',
+      body: 'Vacuum sizing tanks ensure precise outer diameter while internal pressure maintains perfect roundness and wall thickness uniformity.'
+    },
+    {
+      title: 'In-line Quality Control',
+      body: 'Ultrasonic gauges and laser micrometers verify wall thickness, ovality, and diameter against tight ISO/IS tolerances in real time.'
+    },
+    {
+      title: 'Permanent Pipe Marking',
+      body: 'Pipes are marked with size, pressure rating, batch code, and standards information for full traceability throughout their service life.'
+    },
+    {
+      title: 'Automated Cutting to Length',
+      body: 'Servo-driven saws cut pipes to specified lengths with clean square edges, ready for coiling or palletized straight-length packaging.'
+    },
+    {
+      title: 'Coiling, Stacking & Packaging',
+      body: 'Coiled and straight lengths are packaged, labeled, and prepared for dispatch with strapping and end caps that protect during transit.'
+    }
+  ];
+
+  function setActive(index) {
+    if (index < 0) index = 0;
+    if (index >= pills.length) index = pills.length - 1;
+    pills.forEach(function (pill, i) {
+      var isActive = i === index;
+      pill.classList.toggle('hdpe-process-pill--active', isActive);
+      pill.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+    if (titleEl && stepDetails[index]) {
+      titleEl.textContent = stepDetails[index].title;
+      var bodyEl = titleEl.parentElement && titleEl.parentElement.querySelector('.hdpe-process-detail__body');
+      if (bodyEl) bodyEl.textContent = stepDetails[index].body;
+    }
+  }
+
+  function currentIndex() {
+    for (var i = 0; i < pills.length; i++) {
+      if (pills[i].classList.contains('hdpe-process-pill--active')) return i;
+    }
+    return 0;
+  }
+
+  pills.forEach(function (pill, i) {
+    pill.addEventListener('click', function () { setActive(i); });
+  });
+
+  var prevBtn = document.querySelector('.hdpe-process-nav__btn--prev');
+  var nextBtn = document.querySelector('.hdpe-process-nav__btn--next');
+  if (prevBtn) prevBtn.addEventListener('click', function () { setActive(currentIndex() - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { setActive(currentIndex() + 1); });
+})();
+
 // ===== FAQ accordion =====
 document.querySelectorAll('.faq-item__trigger').forEach(function (trigger) {
   trigger.addEventListener('click', function () {
