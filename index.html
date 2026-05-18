@@ -32,7 +32,7 @@
             <button class="primary-nav__link primary-nav__link--button" type="button" aria-haspopup="true"
               aria-expanded="false">
               Products
-              <span class="primary-nav__caret" aria-hidden="true">▾</span>
+              <img src="assets/icons/caret-arrow-down.svg" alt="" class="primary-nav__caret" aria-hidden="true" />
             </button>
             <!-- Optional dropdown menu -->
             <ul class="primary-nav__dropdown">
@@ -84,6 +84,19 @@
   <main>
     <!-- hero-section -->
     <section class="hero-section">
+      <nav class="hero-breadcrumb" aria-label="Breadcrumb">
+        <ol class="hero-breadcrumb__list" role="list">
+          <li class="hero-breadcrumb__item">
+            <a class="hero-breadcrumb__link" href="#products">Products</a>
+          </li>
+          <li class="hero-breadcrumb__item hero-breadcrumb__item--separator" aria-hidden="true">
+            <img src="assets/icons/caret-right-icon.svg" alt="" class="hero-breadcrumb__chevron" />
+          </li>
+          <li class="hero-breadcrumb__item" aria-current="page">
+            <span class="hero-breadcrumb__current">Two For One Twister</span>
+          </li>
+        </ol>
+      </nav>
       <div class="hero-container">
 
         <!-- Left content: hero gallery -->
@@ -400,76 +413,86 @@
           <span class="faq-title__highlight">Frequently</span> Asked Questions
         </h2>
         <ul class="faq-list" role="list">
-          <button class="faq-item__trigger" type="button" aria-expanded="true" aria-controls="faq-answer-1">
-            <span>What is the purpose of a laser cutter for sheet metal?</span>
-            <span class="faq-item__icon faq-item__icon--up" aria-hidden="true">
-              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true" focusable="false">
-                <path d="M11.25 6L6 0.75L0.75 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg>
-            </span>
-          </button>
-          <div id="faq-answer-1" class="faq-item__answer" role="region">
-            <p>It is designed to cut various types of sheet metal with precision, allowing for intricate designs and
-              shapes that are essential in manufacturing processes.</p>
-          </div>
-          <button class="faq-item__trigger" type="button" aria-expanded="false" aria-controls="faq-answer-2">
-            <span>What are the benefits of using aluminum tubing in manufacturing?</span>
-            <span class="faq-item__icon" aria-hidden="true">
-              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true" focusable="false">
-                <path d="M11.25 6L6 0.75L0.75 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg>
-            </span>
-          </button>
-          <div id="faq-answer-2" class="faq-item__answer" role="region" hidden>
-            <p>Aluminum tubing offers a lightweight yet strong solution for various manufacturing needs, providing
-              excellent corrosion resistance and thermal conductivity.</p>
-          </div>
-          <button class="faq-item__trigger" type="button" aria-expanded="false" aria-controls="faq-answer-3">
-            <span>How is aluminum tubing produced?</span>
-            <span class="faq-item__icon" aria-hidden="true">
-              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true" focusable="false">
-                <path d="M11.25 6L6 0.75L0.75 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg>
-            </span>
-          </button>
-          <div id="faq-answer-3" class="faq-item__answer" role="region" hidden>
-            <p>Aluminum tubing is produced through extrusion, where heated aluminum billets are forced through a die to
-              create the desired shape and dimensions.</p>
-          </div>
-          <button class="faq-item__trigger" type="button" aria-expanded="false" aria-controls="faq-answer-4">
-            <span>What are the common applications of aluminum tubing?</span>
-            <span class="faq-item__icon" aria-hidden="true">
-              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true" focusable="false">
-                <path d="M11.25 6L6 0.75L0.75 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg>
-            </span>
-          </button>
-          <div id="faq-answer-4" class="faq-item__answer" role="region" hidden>
-            <p>Common applications include aerospace, automotive, construction, HVAC systems, and fluid transfer
-              pipelines.</p>
-          </div>
-          <button class="faq-item__trigger" type="button" aria-expanded="false" aria-controls="faq-answer-5">
-            <span>Can aluminum tubing be customized?</span>
-            <span class="faq-item__icon" aria-hidden="true">
-              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true" focusable="false">
-                <path d="M11.25 6L6 0.75L0.75 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg>
-            </span>
-          </button>
-          <div id="faq-answer-5" class="faq-item__answer" role="region" hidden>
-            <p>Yes, aluminum tubing can be customized in terms of diameter, wall thickness, length, and surface finish
-              to meet specific project requirements.</p>
-          </div>
+          <li class="faq-item">
+            <button class="faq-item__trigger" type="button" aria-expanded="true" aria-controls="faq-answer-1">
+              <span>What is the purpose of a laser cutter for sheet metal?</span>
+              <span class="faq-item__icon faq-item__icon--up" aria-hidden="true">
+                <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true" focusable="false">
+                  <path d="M11.25 6L6 0.75L0.75 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+            </button>
+            <div id="faq-answer-1" class="faq-item__answer" role="region">
+              <p>It is designed to cut various types of sheet metal with precision, allowing for intricate designs and
+                shapes that are essential in manufacturing processes.</p>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-item__trigger" type="button" aria-expanded="false" aria-controls="faq-answer-2">
+              <span>What are the benefits of using aluminum tubing in manufacturing?</span>
+              <span class="faq-item__icon" aria-hidden="true">
+                <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true" focusable="false">
+                  <path d="M11.25 6L6 0.75L0.75 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+            </button>
+            <div id="faq-answer-2" class="faq-item__answer" role="region" hidden>
+              <p>Aluminum tubing offers a lightweight yet strong solution for various manufacturing needs, providing
+                excellent corrosion resistance and thermal conductivity.</p>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-item__trigger" type="button" aria-expanded="false" aria-controls="faq-answer-3">
+              <span>How is aluminum tubing produced?</span>
+              <span class="faq-item__icon" aria-hidden="true">
+                <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true" focusable="false">
+                  <path d="M11.25 6L6 0.75L0.75 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+            </button>
+            <div id="faq-answer-3" class="faq-item__answer" role="region" hidden>
+              <p>Aluminum tubing is produced through extrusion, where heated aluminum billets are forced through a die
+                to create the desired shape and dimensions.</p>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-item__trigger" type="button" aria-expanded="false" aria-controls="faq-answer-4">
+              <span>What are the common applications of aluminum tubing?</span>
+              <span class="faq-item__icon" aria-hidden="true">
+                <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true" focusable="false">
+                  <path d="M11.25 6L6 0.75L0.75 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+            </button>
+            <div id="faq-answer-4" class="faq-item__answer" role="region" hidden>
+              <p>Common applications include aerospace, automotive, construction, HVAC systems, and fluid transfer
+                pipelines.</p>
+            </div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-item__trigger" type="button" aria-expanded="false" aria-controls="faq-answer-5">
+              <span>Can aluminum tubing be customized?</span>
+              <span class="faq-item__icon" aria-hidden="true">
+                <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true" focusable="false">
+                  <path d="M11.25 6L6 0.75L0.75 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+            </button>
+            <div id="faq-answer-5" class="faq-item__answer" role="region" hidden>
+              <p>Yes, aluminum tubing can be customized in terms of diameter, wall thickness, length, and surface finish
+                to meet specific project requirements.</p>
+            </div>
+          </li>
         </ul>
         <div class="faq-catalogue">
           <div class="faq-catalogue__left">
@@ -503,19 +526,13 @@
           <div class="applications-carousel__nav" role="group" aria-label="Carousel controls">
             <button type="button" class="applications-carousel__btn applications-carousel__btn--prev"
               aria-controls="applications-carousel-viewport" aria-label="Show previous slides">
-              <svg class="applications-carousel__chevron" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"
-                focusable="false">
-                <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg>
+              <img class="applications-carousel__chevron" src="assets/icons/arrow-left.svg" alt="" width="20"
+                height="20" aria-hidden="true" />
             </button>
             <button type="button" class="applications-carousel__btn applications-carousel__btn--next"
               aria-controls="applications-carousel-viewport" aria-label="Show next slides">
-              <svg class="applications-carousel__chevron" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"
-                focusable="false">
-                <path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg>
+              <img class="applications-carousel__chevron" src="assets/icons/arrow-right.svg" alt="" width="20"
+                height="20" aria-hidden="true" />
             </button>
           </div>
         </header>
@@ -686,24 +703,6 @@
               From innovative Two-For-One Twisters to specialized heat setting machines, we deliver
               complete solutions for modern textile manufacturing.
             </p>
-          </div>
-          <div class="testimonials-carousel__nav" role="group" aria-label="Testimonials carousel controls">
-            <button type="button" class="applications-carousel__btn testimonials-carousel__btn--prev"
-              aria-controls="testimonials-scroller" aria-label="Show previous testimonials">
-              <svg class="applications-carousel__chevron" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"
-                focusable="false">
-                <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg>
-            </button>
-            <button type="button" class="applications-carousel__btn testimonials-carousel__btn--next"
-              aria-controls="testimonials-scroller" aria-label="Show next testimonials">
-              <svg class="applications-carousel__chevron" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"
-                focusable="false">
-                <path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg>
-            </button>
           </div>
         </header>
 
